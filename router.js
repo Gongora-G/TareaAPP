@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
     const { username, password } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
-        const query = 'INSERT INTO usersregister (username, password) VALUES ($1, $2)';
+        const query = 'INSERT INTO "usersregister" (username, password) VALUES ($1, $2)';
         await pool.query(query, [username, hashedPassword]);
         res.redirect('/home');
     } catch (error) {
