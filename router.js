@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const pool = require('./db');
+const pool = require('./database/db'); // Ajusta la ruta a la ubicación del archivo
 const conexion = require('./database/db');
 
 // Middleware para comprobar si el usuario está autenticado

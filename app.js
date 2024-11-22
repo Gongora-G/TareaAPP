@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const flash = require('connect-flash');
-const pool = require('./db'); // Ajusta la ruta si está en otra carpeta
+const pool = require('./database/db'); // Ajusta la ruta a la ubicación del archivo
 require('dotenv').config(); // Para cargar las variables de entorno
 
 const app = express();
