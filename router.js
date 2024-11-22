@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const pool = require('./db');
 const conexion = require('./database/db');
 
 // Middleware para comprobar si el usuario está autenticado
