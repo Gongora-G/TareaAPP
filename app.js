@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const flash = require('connect-flash');
-const PgSession = require('connect-pg-simple')(session); // Para usar PostgreSQL como almacenamiento de sesiones
+// const PgSession = require('connect-pg-simple')(session); // Para usar PostgreSQL como almacenamiento de sesiones
 const { Pool } = require('pg'); // Importar el cliente de PostgreSQL
 require('dotenv').config(); // Para cargar las variables de entorno
 
@@ -22,16 +22,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Configuración de sesiones para producción
-app.use(
-    session({
-        store: new PgSession({
-            pool: pool, // Usa PostgreSQL como almacenamiento de sesiones
-        }),
-        secret: 'my_secret_key',
-        resave: false,
-        saveUninitialized: false,
-    })
-);
+// app.use(
+//     session({
+//         store: new PgSession({
+//             pool: pool, // Usa PostgreSQL como almacenamiento de sesiones
+//             tableName: 'session', // Nombre de la tabla
+//         }),
+//         secret: 'my_secret_key',
+//         resave: false,
+//         saveUninitialized: false,
+//     })
+// );
+
 
 app.use(flash());
 
