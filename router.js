@@ -40,27 +40,14 @@ router.get('/register', (req, res) => {
 
 router.post('/register', async (req, res) => {
     const { username, password } = req.body;
-
     try {
-        // Hashear la contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Consulta para insertar el usuario
-        const query = `
-            INSERT INTO usersregister (username, password) 
-            VALUES ($1, $2)
-        `;
-        const values = [username, hashedPassword];
-
-        // Ejecutar la consulta con el pool de PostgreSQL
-        await pool.query(query, values);
-
-        // Crear sesión y redirigir al usuario
-        req.session.user = username;
+        const query = 'INSERT INTO usersregister (username, password) VALUES ($1, $2)';
+        await pool.query(query, [username, hashedPassword]);
         res.redirect('/home');
     } catch (error) {
         console.error('Error al registrar usuario:', error.message);
-        res.send('Error al registrar al usuario');
+        res.send('Error al registrar usuario');
     }
 });
 
